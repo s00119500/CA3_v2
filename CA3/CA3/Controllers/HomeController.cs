@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CA3.Models;
 
 namespace CA3.Controllers
 {
     public class HomeController : Controller
     {
+        northwndEntities nw = new northwndEntities();
         //
         // GET: /Home/
 
         public ActionResult Index()
         {
-            return View();
+            var displayAllProducts = from p in nw.Products
+                                     select p;
+            return View(displayAllProducts);
         }
 
         //
