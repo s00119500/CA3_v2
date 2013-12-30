@@ -21,7 +21,7 @@ namespace CA3.Controllers
                                      select p;
             return View(displayAllProducts.OrderBy(p => p.ProductID).ToPagedList(page ?? 1, 6)); ///  paged list : page ?? 1 means if the page number is null, we set it to 1
                                                                                                 ///  ,6 means the page will display 6 entries in one page
-                                                                                                ///  PagedList also requires a 
+                                                                                                ///  PagedList also requires a OrderBy or a ToList to start with
         }
 
         //

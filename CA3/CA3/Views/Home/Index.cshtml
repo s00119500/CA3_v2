@@ -86,5 +86,13 @@
     }
     
     </table>
+    <div class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),      /// this displays the PagedList control
+                                                                                    /// page = the parameter passed, int
+                                                                                    /// Url.Action = name of the controller action
+                                                                                    /// PagedListRenderOptions is a way of setting options like display
+    new PagedListRenderOptions() { DisplayPageCountAndCurrentLocation = true })
+    </div>
+    
 </body>
 </html>
