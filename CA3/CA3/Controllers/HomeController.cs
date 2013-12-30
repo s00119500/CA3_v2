@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CA3.Models;
+using CA3.Models;       // for entity framework
+using PagedList;        // for paged list
+using PagedList.Mvc;    //
 
 namespace CA3.Controllers
 {
@@ -13,11 +15,13 @@ namespace CA3.Controllers
         //
         // GET: /Home/
 
-        public ActionResult Index()
-        {
+        public ActionResult Index( int? page)   // ? means nullable, we will use this var as a page count
+        {                                         
             var displayAllProducts = from p in nw.Products
                                      select p;
-            return View(displayAllProducts);
+            return View(displayAllProducts.OrderBy(p => p.ProductID).ToPagedList(page ?? 1, 6)); ///  paged list : page ?? 1 means if the page number is null, we set it to 1
+                                                                                                ///  ,6 means the page will display 6 entries in one page
+                                                                                                ///  PagedList also requires a 
         }
 
         //

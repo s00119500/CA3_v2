@@ -1,6 +1,9 @@
-﻿@using BootstrapSupport
-@model IEnumerable<CA3.Models.Product>
-
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using BootstrapSupport
+@*@model BootstrapSupport.HtmlHelpers.IPagedList<CA3.Models.Product> = wrong *@ 
+@model IPagedList<CA3.Models.Product>
+@*changed Ienumerable to Ipagedlist*@
 <!DOCTYPE html>
 
 <html>
@@ -15,31 +18,32 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProductName)
+                @Html.DisplayNameFor(model => model.First().ProductName)
+                @* added .First() to the titles because paged list requires us to specify the type explcitly*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SupplierID)
+                @Html.DisplayNameFor(model => model.First().SupplierID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CategoryID)
+                @Html.DisplayNameFor(model => model.First().CategoryID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.QuantityPerUnit)
+                @Html.DisplayNameFor(model => model.First().QuantityPerUnit)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UnitPrice)
+                @Html.DisplayNameFor(model => model.First().UnitPrice)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UnitsInStock)
+                @Html.DisplayNameFor(model => model.First().UnitsInStock)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UnitsOnOrder)
+                @Html.DisplayNameFor(model => model.First().UnitsOnOrder)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReorderLevel)
+                @Html.DisplayNameFor(model => model.First().ReorderLevel)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Discontinued)
+                @Html.DisplayNameFor(model => model.First().Discontinued)
             </th>
             <th></th>
         </tr>
