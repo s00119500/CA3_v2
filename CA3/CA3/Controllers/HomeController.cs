@@ -14,9 +14,10 @@ namespace CA3.Controllers
         northwndEntities nw = new northwndEntities();
         //
         // GET: /Home/
+        
 
         public ActionResult Index( int? page)   // ? means nullable, we will use this var as a page count
-        {                                         
+        {                             
             var displayAllProducts = from p in nw.Products
                                      select p;
             //tool tip to display details
@@ -34,13 +35,32 @@ namespace CA3.Controllers
         {
            
             IEnumerable<Order> model = nw.Orders.Take(3);
+           
 
             return PartialView("displayOrdersForProduct", model); 
 
         }//end of displayOrdersForProduct
 
-        //
-        // GET: /Home/Details/5
+        //public PartialViewResult test(int ? productId)
+        //{
+
+        //    var selectedProductId = productId;
+
+        //    var q1 =    from productIdInOrderDetails in nw.Order_Details                    // match the product id from product selected to the one in 
+        //                where selectedProductId == productIdInOrderDetails.ProductID        // the order details table and get the order Id
+        //                select productIdInOrderDetails.OrderID;
+
+        //    var q2 =    from b in nw.Orders                                                 // match the order id from order details to the one in 
+        //                where b.OrderID.ToString() == q1.ToString()                         // the orders table
+        //                select b;  // = order id on order table that the product belongs to
+
+        //    //IEnumerable<Order> m = nw.Orders.Where(); 
+        //    //IEnumerable<Order> model = nw.Orders.Take(3);
+
+            
+        //    return PartialView("displayOrdersForProduct", q2.OrderBy(a=> a.OrderID));
+
+        //}//end of displayOrdersForProduct
 
         public ActionResult Details(int? id) ///  for testing, enabeled via action link in index view
         {

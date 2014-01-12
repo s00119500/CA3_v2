@@ -9,17 +9,18 @@
 <html>
 <head>
     <script src="~/scripts/jquery-1.9.1.min.js"></script>
-    <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script> @*should probably be in the bundle config file 
+                                                                     but if i leave it here i'll remember to add it when i'm revising*@
     <meta name="viewport" content="width=device-width" />
     <title>CA 3</title>
 </head>
 <body>
     <p>
         @*@Html.ActionLink("Create New", "Create")*@
-        @Html.ActionLink("test", "Details", "Home")
+        @*@Html.ActionLink("test", "Details", "Home")*@
          
     </p>
-    <table class="table">
+    <table class="table table-hover">
         <tr>
             <th @*title="i am tool tip !"*@>
                 @Html.DisplayNameFor(model => model.First().ProductName)
@@ -93,6 +94,7 @@
            UpdateTargetId = "displayForOrders", // target id (div)
            InsertionMode = InsertionMode.Replace  //replaces old data with current
            })
+                @*@Ajax.ActionLink("test","test", new AjaxOptions(){ HttpMethod = "Get", UpdateTargetId ="displayForOrders", InsertionMode = InsertionMode.Replace })*@
             </td>
         </tr>
     }
