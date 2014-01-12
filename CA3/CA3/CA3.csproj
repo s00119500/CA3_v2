@@ -332,6 +332,7 @@
     <Content Include="scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\shared\displayOrdersForProduct.cshtml" />
     <None Include="Views\shared\Old%28Index.cshtml%29" />
     <None Include="Views\shared\old%28Details.cshtml%29" />
     <Content Include="Views\shared\Create.cshtml" />

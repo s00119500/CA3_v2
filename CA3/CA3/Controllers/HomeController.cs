@@ -30,11 +30,12 @@ namespace CA3.Controllers
                                                                                                 ///  PagedList also requires a OrderBy or a ToList to start with
         }//end of index
 
-        public PartialViewResult displayOrdersForProduct(int id) 
-        { 
-            //List<Order> model = nw.
-            
-           return PartialView(); 
+        public PartialViewResult displayOrdersForProduct() 
+        {
+           
+            IEnumerable<Order> model = nw.Orders.Take(3);
+
+            return PartialView("displayOrdersForProduct", model); 
 
         }//end of displayOrdersForProduct
 

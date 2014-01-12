@@ -8,8 +8,10 @@
 
 <html>
 <head>
+    <script src="~/scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>CA 3</title>
 </head>
 <body>
     <p>
@@ -84,6 +86,14 @@
                 @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
                 @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
             </td>*@
+            <td>
+                @*tag that loads partial view*@
+                @Ajax.ActionLink("Associated Orders", "displayOrdersForProduct", new AjaxOptions() { 
+           HttpMethod = "Post", ///get or post
+           UpdateTargetId = "displayForOrders", // target id (div)
+           InsertionMode = InsertionMode.Replace  //replaces old data with current
+           })
+            </td>
         </tr>
     }
     
@@ -95,8 +105,9 @@
                                                                                     /// PagedListRenderOptions is a way of setting options like display
     new PagedListRenderOptions() { DisplayPageCountAndCurrentLocation = true })
     </div>
-    <div style="background-color:grey"> @* this div is for the partial view that will display 3 orders that contain the most products for the selected product*@
-
+   
+     <div style="background-color:grey" id="displayForOrders"> @* this div is for the partial view that will display 3 orders that contain the most products for the selected product*@
+        <table></table>
     </div>
     
 </body>
