@@ -19,17 +19,33 @@ namespace CA3.Controllers
         {                                         
             var displayAllProducts = from p in nw.Products
                                      select p;
+            //tool tip to display details
+            var suppliers = from s in nw.Suppliers
+                                          select s;
+            //var productsSupplierDetails = from p in nw.Products
+            //                              select p.Supplier;
+            
             return View(displayAllProducts.OrderBy(p => p.ProductID).ToPagedList(page ?? 1, 6)); ///  paged list : page ?? 1 means if the page number is null, we set it to 1
                                                                                                 ///  ,6 means the page will display 6 entries in one page
                                                                                                 ///  PagedList also requires a OrderBy or a ToList to start with
-        }
+        }//end of index
+
+        public PartialViewResult displayOrdersForProduct(int id) 
+        { 
+            //List<Order> model = nw.
+            
+           return PartialView(); 
+
+        }//end of displayOrdersForProduct
 
         //
         // GET: /Home/Details/5
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id) ///  for testing, enabeled via action link in index view
         {
-            return View();
+            var productsSupplierDetails = from p in nw.Products
+                                          select p.Supplier;
+            return View(productsSupplierDetails);
         }
 
         //
